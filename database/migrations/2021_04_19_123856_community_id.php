@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class ModifyCommunityIdInUsers extends Migration
+class CommunityId extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class ModifyCommunityIdInUsers extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->foreignId('community_id')->constrained('communities')->nullable();
+            $table->foreignId('community_id')->nullable()->change();
         });
     }
 
@@ -26,7 +26,7 @@ class ModifyCommunityIdInUsers extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->foreignId('community_id')->constrained('communities');
+            $table->foreignId('community_id')->nullable('false')->change();
         });
     }
 }
