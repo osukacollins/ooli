@@ -14,7 +14,7 @@ class AddCommunityIdToUsers extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->foreignId('community_id')->constrained('communities');
+            $table->foreignId('community_id')->constrained('communities')->nullable();
         });
     }
 
