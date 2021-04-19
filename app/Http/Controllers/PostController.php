@@ -35,14 +35,25 @@ class PostController extends Controller
             'user_id' => $request->user()->id,
             'body' => $request->body
         ]);
+        $last_posts = Post::where('user_id', $request->user()->id)->orderBy('created_at', 'desc')->take(1)->get();
+        foreach ($last_posts as $last_post) {
+            $last_post_id = $last_post->id;
+            $last_post_user = $last_post->user_id;
+        }
+
 
         // create a notification
         Notification::create([
             'user_id' => $request->user()->id,
-            'type' => 'upvote',
-            'post_id' => $request->post->id,
-            'by' => $request->post->user_id
+            'type' => 'post',
+            'post_id' => $last_post_id,
+            'by' => $last_post_user
         ]);
+        return back();
+    }
+    public function destroy(Post $post, Request $request)
+    {
+        $request->user()->posts()->where('id', $post->id)->delete();
         return back();
     }
 }

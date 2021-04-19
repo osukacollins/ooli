@@ -1,13 +1,13 @@
 @extends('main.main')
 
 @section('content')
-<div class="w-4/5 flex">
-    <div class="p-3 w-2/3">
+<div class="lg:w-4/5 flex overflow-scroll">
+    <div class="lg:p-3 lg:w-2/3">
 
         @if (!empty($community))
 
         @if(empty(auth()->user()->community))
-        <div class="rounded flex flex-col bg-gray-600 p-3 flex shadow-lg my-5">
+        <div class="lg:rounded flex flex-col bg-gray-600 p-3 flex shadow-lg my-5">
             <div class="flex justify-between w-full">
                 <div class="flex text-gray-400">
                     <p class="px-3 text-lg font-bold">You do not belong to any community</p>
@@ -16,13 +16,13 @@
         </div>
         @endif
 
-        <div class="rounded flex flex-col bg-gray-600 p-3 flex shadow-lg my-5">
+        <div class="lg:rounded flex flex-col bg-gray-600 p-3 flex shadow-lg my-5">
             <div class="flex justify-between w-full">
                 <div class="flex text-gray-400">
                     <p class="px-3 text-lg font-bold">Community Profile</p>
                 </div>
             </div>
-            <div class="flex">
+            <div class="flex lg:flex-row flex-col">
                 <div class="flex p-3">
                     <img src="{{ asset('./images/image.png') }}" alt="" height="400" width="400">
                 </div>
@@ -30,7 +30,7 @@
 
                     <div class="flex flex-col p-3 h-full">
                         <div class="">
-                            <p class="text-gray-400 font-semibold">
+                            <p class="text-gray-400 font-semibold text-xl">
                                 {{ $community->community_name }}
                             </p>
                             <p class="text-gray-400">
@@ -41,14 +41,14 @@
                     </div>
                     <div class="flex">
                         <div class="flex p-3" title="users">
-                            <div class="px-3">
+                            <div class="pr-3 lg:px-3">
                                 <img src="{{ asset('./images/group.png') }}" alt="" height="30" width="30">
                             </div>
 
                             <p class="text-gray-400">{{ $community->users()->count() }}</p>
                         </div>
                         <div class="flex p-3" title="posts">
-                            <div class="px-3">
+                            <div class="pr-3 lg:px-3">
                                 <img src="{{ asset('./images/newspaper.png') }}" alt="" height="25" width="25">
                             </div>
 
@@ -83,7 +83,7 @@
 
         </div>
         @endif
-       
+
         <div class="rounded flex flex-col bg-gray-600 p-3 flex shadow-lg my-5">
             <div class="container flex flex-col">
                 <div class="text-gray-400 text-4xl">Start your own community</div>
@@ -113,10 +113,10 @@
                 </form>
             </div>
         </div>
-        
+
     </div>
 
-    <div class="p-3 w-1/3 flex flex-col">
+    <div class="p-3 lg:w-1/3 hidden lg:flex lg:flex-col">
         <div class="text-gray-400 p-3">
             <p class="text-3xl">Trending communities</p>
             <div class="font-light p-3">

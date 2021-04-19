@@ -20,6 +20,12 @@ class DownvoteController extends Controller
         if ($post->downvotedBy($request->user())) {
             return response(null, 409);
         }
+
+        // delete upvote
+        if ($post->upvotedBy($request->user())) {
+            $request->user()->upvotes()->where('post_id', $post->id)->delete();
+        }
+
         // store 
         $post->downvotes()->create([
             'user_id' => $request->user()->id,
@@ -28,7 +34,7 @@ class DownvoteController extends Controller
         // create a notification
         Notification::create([
             'user_id' => $request->user()->id,
-            'type' => 'upvote',
+            'type' => 'downvote',
             'post_id' => $request->post->id,
             'by' => $request->post->user_id
         ]);

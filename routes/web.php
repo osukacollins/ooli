@@ -50,6 +50,8 @@ Route::get('/community/{community}', [CommunityController::class, 'show'])->name
 Route::get('/home', [PostController::class, 'index'])->name('home');
 Route::post('/home', [PostController::class, 'store']);
 
+Route::delete('/posts/{post}/delete', [PostController::class, 'destroy'])->name('post.destroy');
+
 Route::post('/posts/{post}/upvote', [UpvoteController::class, 'store'])->name('upvote');
 Route::delete('/posts/{post}/upvote', [UpvoteController::class, 'destroy'])->name('upvote.destroy');
 
@@ -58,6 +60,8 @@ Route::delete('/posts/{post}/downvote', [DownvoteController::class, 'destroy'])-
 
 Route::get('/post/{post}/comments', [CommentController::class, 'index'])->name('post.comments');
 Route::post('/post/{post}/comments', [CommentController::class, 'store']);
+
+Route::delete('/comment/{comment}/delete', [CommentController::class, 'destroy'])->name('comment.destroy');
 
 Route::get('/explore', [ExploreController::class, 'index'])->name('explore');
 

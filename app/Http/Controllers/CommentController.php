@@ -41,11 +41,17 @@ class CommentController extends Controller
         // create a notification
         Notification::create([
             'user_id' => $request->user()->id,
-            'type' => 'upvote',
+            'type' => 'comment',
             'post_id' => $request->post->id,
             'by' => $request->post->user_id
         ]);
 
+        return back();
+    }
+    public function destroy(Comment $comment, Request $request)
+    {
+
+        $request->user()->comments()->where('id', $request->comment->id)->delete();
         return back();
     }
 }

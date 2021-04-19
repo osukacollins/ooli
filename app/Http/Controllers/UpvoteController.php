@@ -21,6 +21,11 @@ class UpvoteController extends Controller
             return response(null, 409);
         }
 
+        // delete downvote
+        if ($post->downvotedBy($request->user())) {
+            $request->user()->downvotes()->where('post_id', $post->id)->delete();
+        }
+
         // store 
         $post->upvotes()->create([
             'user_id' => $request->user()->id,

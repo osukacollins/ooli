@@ -1,9 +1,9 @@
 @extends('main.main')
 
 @section('content')
-<div class="w-4/5 flex">
-    <div class="p-3 w-2/3">
-        <div class="rounded flex flex-col bg-gray-600 p-3 flex shadow-lg my-5">
+<div class="lg:w-4/5 flex overflow-scroll">
+    <div class="lg:p-3 lg:w-2/3 w-full">
+        <div class="rounded flex flex-col lg:bg-gray-600 p-3 p-1 flex lg:shadow-lg lg:my-5">
             <div class="bottom-3" id="account">
                 <div class="flex w-full">
                     <div class="flex text-gray-400">
@@ -11,8 +11,9 @@
                     </div>
                 </div>
                 <hr style="border-block-color: #92a3a8;">
-                <div class="flex p-3">
-                    <a href="{{ route('profile', auth()->user()->username) }}" class="text-gray-400 hover:text-blue-400">
+                <div class="flex flex-col p-3">
+                    <a href="{{ route('profile', auth()->user()->username) }}"
+                        class="text-gray-400 hover:text-blue-400">
                         Go to profile settings
                     </a>
                 </div>
@@ -32,6 +33,7 @@
                     <a href="#" class="text-gray-400 hover:text-blue-400">
                         Verify account
                     </a>
+
                 </div>
             </div>
 
@@ -141,16 +143,18 @@
 
             <div class="bottom-3" id="delete-account">
                 <hr style="border-block-color: #92a3a8;">
-                <div class="flex p-3">
+                <div class="flex p-3 flex-col">
+                    <a href="{{ route('logout') }}" class="text-blue-400 lg:hidden">logout</a>
                     <a href="#" class="text-gray-400 hover:text-blue-400">
                         Delete my Account
                     </a>
+
                 </div>
             </div>
 
         </div>
     </div>
-    <div class="p-3 w-1/3 flex flex-col">
+    <div class="p-3 lg:w-1/3 hidden lg:flex lg:flex-col">
         <div class="rounded flex flex-col bg-gray-600 p-3 flex shadow-lg my-5 w-2/3">
             <div class="text-gray-400">
                 <div class="font-semibold text-lg">

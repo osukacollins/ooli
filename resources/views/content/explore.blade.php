@@ -1,8 +1,25 @@
 @extends('main.main')
 
 @section('content')
-<div class="w-4/5 flex">
-    <div class="p-3 w-2/3">
+<div class="lg:w-4/5 lg:flex overflow-y-scroll">
+    <div class="lg:p-3 lg:w-2/3">
+        <div class="lg:hidden relative">
+            <div class="sticky bg-gray-800 absolute -inset-0 flex items-center">
+                <div class="p-1 w-12 ">
+                    <img src="{{ asset('./images/user1.png') }}" alt="user" class="object-contain" height="70"
+                        width="70">
+                </div>
+
+                <form action="{{ route('search') }}" class="p-1 w-full flex items-center" method="get">
+
+                    <input type="text" name="search" id="" class="rounded-xl shadow-inner p-2 text-gray-400 w-4/5"
+                        placeholder="Search for something">
+                    <span class="p-1">
+                        <button class="border-gray-400 rounded-xl p-2 text-gray-400 border-2">Search</button>
+                    </span>
+                </form>
+            </div>
+        </div>
         {{-- users --}}
         @if(!empty($users)&&!empty($users_else)&&!empty($communities))
         @if($users->count())
@@ -108,7 +125,7 @@
         </div>
         @endforeach
         @else
-        <div class="p-3 flex flex-col">
+        <div class="p-3 flex flex-col h-screen p-3">
             <div class="container">
                 <p class="text-gray-400 text-center text-2xl font-light">There are no communities</p>
             </div>
@@ -123,12 +140,12 @@
         @endforeach
 
         @else
-        <div class="text-gray-400 text-lg ">
-            there are no post
+        <div class="text-gray-400 text-lg container h-screen p-3">
+            there are such no posts
         </div>
         @endif
     </div>
-    <div class="p-3 w-1/3 flex flex-col">
+    <div class="p-3 lg:w-1/3 hidden lg:flex lg:flex-col">
         <div class="text-gray-400 p-3">
             <p class="text-3xl">Trending communities</p>
             <div class="font-light p-3">

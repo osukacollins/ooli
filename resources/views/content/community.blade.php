@@ -1,9 +1,10 @@
 @extends('main.main')
 
 @section('content')
-<div class="w-4/5 flex">
-    <div class="p-3 w-2/3">
-        <div class="text-gray-400 text-4xl">Welcome to Ooli communities</div>
+<div class="lg:w-4/5 flex overflow-scroll">
+    <div class="lg:p-3 lg:w-2/3">
+        <div class="text-gray-400 text-2xl font-bold lg:font-semibold p-1 lg:p-0 lg:text-4xl">Welcome to Ooli
+            communities</div>
 
         @if ($communities->count())
         @if(empty(auth()->user()->community))
@@ -16,23 +17,24 @@
         </div>
         @endif
         @foreach ($communities as $community)
-        <div class="rounded flex justify-between bg-gray-600 p-3 flex shadow-lg my-5">
-            <div class="flex p-3">
-                <img src="{{ asset('./images/image.png') }}" alt="" height="20" width="20">
+        <div class="lg:rounded flex justify-between bg-gray-600 p-3 flex shadow-lg my-5">
+            <div class="flex p-3 items-center">
+                <div class=""> <img src="{{ asset('./images/image.png') }}" alt="" height="20" width="20">
+                </div>
                 <a class="text-gray-400 px-3 font-semibold hover:text-blue-400"
                     href="{{ route('community.show', $community->id) }}">{{ $community->community_name }}</a>
             </div>
-            <div class="">
+            <div class="w-1/2 flex justify-end">
                 <div class="flex">
                     <div class="flex p-3">
-                        <div class="px-3">
+                        <div class="lg:px-3 px-1">
                             <img src="{{ asset('./images/group.png') }}" alt="" height="30" width="30" title="Members">
                         </div>
 
                         <p class="text-gray-400">{{ $community->users()->count() }}</p>
                     </div>
                     <div class="flex p-3">
-                        <div class="px-3">
+                        <div class="lg:px-3 px-1">
                             <img src="{{ asset('./images/newspaper.png') }}" alt="" height="25" width="25"
                                 title="posts">
                         </div>
@@ -40,7 +42,7 @@
                         <p class="text-gray-400">{{$community->posts()->count()}}</p>
                     </div>
                     <div class="flex p-3">
-                        <div class="px-3">
+                        <div class="lg:px-3 px-1">
                             <form action="{{ route('community') }}" method="post">
                                 @method('PUT')
                                 @csrf
@@ -80,9 +82,10 @@
 
         </div>
         @endif
-        <div class="rounded flex flex-col bg-gray-600 p-3 flex shadow-lg my-5">
+        <div class="lg:rounded flex flex-col bg-gray-600 p-3 flex shadow-lg my-5">
             <div class="container flex flex-col">
-                <div class="text-gray-400 text-4xl">Start your own community</div>
+                <div class="text-gray-400 text-2xl font-bold lg:font-semibold p-1 lg:p-0 lg:text-4xl">Start your own
+                    community</div>
                 <form action="{{ route('community') }}" method="post" class="flex flex-col w-full text-gray-400">
                     @csrf
 
@@ -110,7 +113,7 @@
             </div>
         </div>
     </div>
-    <div class="p-3 w-1/3 flex flex-col">
+    <div class="p-3 lg:w-1/3 hidden lg:flex lg:flex-col">
         <div class="text-gray-400 p-3">
             <p class="text-3xl">Trending communities</p>
             <div class="font-light p-3">

@@ -10,21 +10,21 @@
     <link rel="stylesheet" href="{{ asset('./css/app.css') }}">
 </head>
 
-<body>
+<body class="m-0 w-full">
     <div class="mx-auto bg-gray-800">
-        <nav class="flex justify-between text-gray-400 text-base sticky top-0 z-50">
-            <div>
+        <nav class="flex justify-between text-gray-400 text-base sticky bg-gray-800 lg:bg-transparent top-0 z-50">
+            <div class="h-max">
                 <a href="/">
                     <img src="{{ asset('images/oolilogo.png') }}" alt="ooli" style="height: 56px">
                 </a>
             </div>
-            <div class="font-extralight font-sans">
-                <ul class="flex justify-between flex-row ">
-                    <li class="p-5"><a href="/#about">About</a></li>
-                    <li class="p-5">| </li>
-                    <li class="p-5"><a href="{{ route('register') }}">Join</a></li>
-                    <li class="p-5">| </li>
-                    <li class="p-5"><a href="/#contact">Contact</a></li>
+            <div class="font-extralight font-sans text-sm lg:text-base">
+                <ul class="flex lg:justify-between lg:flex-row">
+                    <li class="lg:p-5 px-3 py-5"><a href="/#about">About</a></li>
+                    <li class="lg:p-5 px-3 py-5">| </li>
+                    <li class="lg:p-5 px-3 py-5"><a href="{{ route('register') }}">Join</a></li>
+                    <li class="lg:p-5 px-3 py-5">| </li>
+                    <li class="lg:p-5 px-3 py-5"><a href="/#contact">Contact</a></li>
                 </ul>
             </div>
 
